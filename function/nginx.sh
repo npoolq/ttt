@@ -134,7 +134,7 @@ mkdir -p /home/wwwroot/
 rm -f /etc/init.d/nginx
 \cp  -f $cur_dir/conf/init.d.nginx /etc/init.d/nginx
 \mv  -f $cur_dir/conf/waf ${nginx_location}/conf/
-\unzip ${nginx_location}/conf/waf/captcha.zip
+\unzip /usr/local/openresty/nginx/conf/waf/captcha.zip -d /usr/local/openresty/nginx/conf/waf
 sed -i "s#^nginx_location=.*#nginx_location=$nginx_location#" /etc/init.d/nginx
 chmod +x /etc/init.d/nginx
 boot_start nginx
