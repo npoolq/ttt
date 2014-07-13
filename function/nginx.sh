@@ -130,11 +130,11 @@ echo "nginx_location=$nginx_location" >> /tmp/ezhttp_info_do_not_del
 config_nginx(){
 groupadd www	
 useradd -M -s /bin/false -g www www
-mkdir -p ${nginx_location}/conf/vhost
 mkdir -p /home/wwwroot/
-\cp  -a $cur_dir/conf/rewrite ${nginx_location}/conf/
 rm -f /etc/init.d/nginx
 \cp  -f $cur_dir/conf/init.d.nginx /etc/init.d/nginx
+\mv  -f $cur_dir/conf/waf ${nginx_location}/conf/
+\unzip ${nginx_location}/conf/captcha.zip
 sed -i "s#^nginx_location=.*#nginx_location=$nginx_location#" /etc/init.d/nginx
 chmod +x /etc/init.d/nginx
 boot_start nginx
