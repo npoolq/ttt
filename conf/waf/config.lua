@@ -1,5 +1,5 @@
 -- http-guard安装目录，修改为实际安装到的目录。
-baseDir = '/data/www/waf/'
+baseDir = '/usr/local/openresty/nginx/conf/waf/'
 
 local Config = {
 	-- key是否动态生成,可选static,dynamic,如果选dynamic,下面所有的keySecret不需要更改,如果选static,修改手动修改下面的keySecret
@@ -41,7 +41,7 @@ local Config = {
 	-- enableModule中的模块为开启状态时，当端口protectPort的连接数连续normalTimes次低于maxConnection时，关闭enableModule中的模块。
 	-- ssCommand  : 我们是使用ss命令来检查特定端口的已连接的连接数，ss命令比同类的命令netstat快得多。请把ss命令的路径改为自己系统上的路径。
 	-- enableModules : 自动启动哪个主动防御模块,可选值为redirectModules JsJumpModules cookieModules
-	autoEnable = { state = "off", protectPort = "80", interval = 30, normalTimes = 3,exceedTimes = 2,maxConnection = 500, ssCommand = "/usr/sbin/ss" ,enableModule = "redirectModules"},
+	autoEnable = { state = "On", protectPort = "80", interval = 30, normalTimes = 3,exceedTimes = 2,maxConnection = 500, ssCommand = "/usr/sbin/ss" ,enableModule = "cookieModules"},
 
 	-- 用于当输入验证码验证通过时,生成key的密码.如果上面的keyDefine为dynamic，就不需要修改
 	captchaKey = "K4QEaHjwyF",
@@ -84,7 +84,7 @@ local Config = {
 
 	-- 如果需要从请求头获取真实ip,此值就需要设置,如x-forwarded-for
 	-- 当state为on时,此设置才有效
-	realIpFromHeader = { state = "Off", header = "x-forwarded-for"},
+	realIpFromHeader = { state = "On", header = "x-forwarded-for"},
 
 	-- 指定验证码图片目录,一般不需要修改
 	captchaDir = baseDir.."captcha/",
