@@ -137,9 +137,6 @@ rm -f /etc/init.d/nginx
 \cp  -f $cur_dir/conf/init.d.nginx /etc/init.d/nginx
 sed -i "s#^nginx_location=.*#nginx_location=$nginx_location#" /etc/init.d/nginx
 chmod +x /etc/init.d/nginx
-\cp  $cur_dir/conf/index.html /home/wwwroot/
-\cp  $cur_dir/conf/tz.php /home/wwwroot/
-\cp  $cur_dir/conf/p.php /home/wwwroot/
 boot_start nginx
 mv ${nginx_location}/conf/nginx.conf ${nginx_location}/conf/nginx.conf_bak
 
@@ -182,7 +179,6 @@ EOF
 fi
 
 #开放80端口
-iptables -I INPUT -p tcp --dport 80 -j ACCEPT
-iptables -I INPUT -p tcp --dport 8081 -j ACCEPT
-
+service iptables stop
+chkconfig iptables off
 }
