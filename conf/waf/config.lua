@@ -41,7 +41,7 @@ local Config = {
 	-- enableModule中的模块为开启状态时，当端口protectPort的连接数连续normalTimes次低于maxConnection时，关闭enableModule中的模块。
 	-- ssCommand  : 我们是使用ss命令来检查特定端口的已连接的连接数，ss命令比同类的命令netstat快得多。请把ss命令的路径改为自己系统上的路径。
 	-- enableModules : 自动启动哪个主动防御模块,可选值为redirectModules JsJumpModules cookieModules
-	autoEnable = { state = "On", protectPort = "80", interval = 30, normalTimes = 3,exceedTimes = 2,maxConnection = 500, ssCommand = "/usr/sbin/ss" ,enableModule = "cookieModules"},
+	autoEnable = { state = "On", protectPort = "80", interval = 30, normalTimes = 3,exceedTimes = 2,maxConnection = 300, ssCommand = "/usr/sbin/ss" ,enableModule = "cookieModules"},
 
 	-- 用于当输入验证码验证通过时,生成key的密码.如果上面的keyDefine为dynamic，就不需要修改
 	captchaKey = "K4QEaHjwyF",
